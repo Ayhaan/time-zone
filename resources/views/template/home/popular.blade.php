@@ -4,7 +4,7 @@
         <div class="row justify-content-center">
             <div class="col-xl-7 col-lg-8 col-md-10">
                 <div class="section-tittle mb-70 text-center">
-                    <h2>Popular Items</h2>
+                    <h2>{{  __('messages.home.popular') }}</h2>
                     <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
                 </div>
             </div>
