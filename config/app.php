@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'Eurpore/brussels',
+    'timezone' => 'Europe/brussels',
 
     /*
     |--------------------------------------------------------------------------

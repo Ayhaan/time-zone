@@ -16,6 +16,28 @@
                                 <li><a href="{{ route('shop') }}">shop</a></li>
                                 <li><a href="{{ route('blog') }}">blog</a></li>
                                 <li><a href="{{ route('contact') }}">Contact</a></li>
+                                {{-- LOGIQUE LANGUE --}}
+                                {{-- ETAPES  --}}
+                                <li class="ml-2">
+                                    <a href="#">
+                                        <img class="mr-1" height="18px" src="{{ asset('img/flag/'. Config::get('languages')[App::getLocale()]['flag-icon'] . ".png") }}" alt="lang-{{ Config::get('languages')[App::getLocale()]['flag-icon'] }}">
+                                        {{ Config::get('languages')[App::getLocale()]['display'] }}
+                                    </a>
+                                    <ul class="submenu">
+                                        @foreach (Config::get('languages') as $lang => $language)
+                                            @if ($lang != App::getLocale())
+                                                <li>
+                                                    <a href="{{ route('lang.switch', $lang) }}" class="d-flex align-items-center">
+                                                        <img class="mr-1" height="18px" src="{{ asset('img/flag/'. $language['flag-icon'] . ".png") }}" alt="lang-{{ $language['flag-icon'] }}">
+                                                        {{$language['display']}}
+                                                    </a>
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                       
+                                    </ul>
+                   
+                                </li>
                             </ul>
                         </nav>
                     </div>

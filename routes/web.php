@@ -20,3 +20,4 @@ Route::get('/blog', [FrontController::class, "blog"])->name('blog');
 Route::get('/contact', [FrontController::class, "contact"])->name('contact');
 Route::get('/blog-details/{blog}', [FrontController::class, "blogDetails"])->name('blog-details');
 Route::get('/product-details/{product}', [FrontController::class, "productDetails"])->name('product-details');
+Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\FrontController@switchLang']);

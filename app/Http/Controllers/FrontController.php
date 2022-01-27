@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 
 class FrontController extends Controller
 {
@@ -34,5 +37,14 @@ class FrontController extends Controller
     public function productDetails(Product $product)
     {
         return view('product-details', compact('product'));
+    }
+
+    //LOGIQUE pour changer la langue de l'application complétement 
+    public function switchLang($lang)
+    {
+        if (array_key_exists($lang, Config::get('languages'))) {
+            Session::put('applocale', $lang);
+        }
+        return Redirect::back();
     }
 }
