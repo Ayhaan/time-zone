@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -14,11 +15,13 @@ class FrontController extends Controller
     }
     public function shop()
     {
-        return view('shop');
+        $products = Product::all();
+        return view('shop', compact("products"));
     }
     public function blog()
     {
-        return view('blog');
+        $blogs = Blog::paginate(2);
+        return view('blog', compact('blogs'));
     }
     public function contact()
     {

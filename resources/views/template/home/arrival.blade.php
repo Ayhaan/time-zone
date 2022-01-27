@@ -17,7 +17,7 @@
                             <img src="{{ asset('img/products/'. $item->img) }}" alt="">
                         </div>
                         <div class="product-caption">
-                            <h3><a href="product_details.html">{{ $item->name }}</a></h3>
+                            <h3><a href="{{ route('product-details', $item->id) }}">{{ $item->name }}</a></h3>
                             <span>$ {{ $item->price }}</span>
                         </div>
                     </div>

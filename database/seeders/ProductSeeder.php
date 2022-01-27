@@ -16,25 +16,33 @@ class ProductSeeder extends Seeder
     {
         DB::table('products')->insert([
             [   
-                "name" => "Thermo Ball Etip Gloves",
+                "name" => "home - Thermo Ball Etip Gloves",
                 "price" => 45.743,
                 "img" => "popular1.png",
                 "description" => "Seamlessly empower fully researched growth strategies and interoperable internal or “organic” sources. Credibly innovate granular internal or “organic” sources whereas high standards in web-readiness. Credibly innovate granular internal or organic sources whereas high standards in web-readiness. Energistically scale future-proof core competencies vis-a-vis impactful experiences. Dramatically synthesize integrated schemas. with optimal networks.",
-                "popular" => true
+                "popular" => true,
+                "filter" => "home",
+                "created_at" => now()
             ],
             [   
-                "name" => "Thermo Ball Etip Gloves",
+                "name" => "profile - Thermo Ball Etip Gloves",
                 "price" => 43,
                 "img" => "popular2.png",
                 "description" => "Seamlessly empower fully researched growth strategies and interoperable internal or “organic” sources. Credibly innovate granular internal or “organic” sources whereas high standards in web-readiness. Credibly innovate granular internal or organic sources whereas high standards in web-readiness. Energistically scale future-proof core competencies vis-a-vis impactful experiences. Dramatically synthesize integrated schemas. with optimal networks.",
-                "popular" => false
+                "popular" => false,
+                "filter" => "profile",
+                "created_at" => now()
+
             ],
             [   
-                "name" => "Thermo Ball Etip Gloves",
+                "name" => "contact - Thermo Ball Etip Gloves",
                 "price" => 50,
                 "img" => "popular3.png",
                 "description" => "Seamlessly empower fully researched growth strategies and interoperable internal or “organic” sources. Credibly innovate granular internal or “organic” sources whereas high standards in web-readiness. Credibly innovate granular internal or organic sources whereas high standards in web-readiness. Energistically scale future-proof core competencies vis-a-vis impactful experiences. Dramatically synthesize integrated schemas. with optimal networks.",
-                "popular" => true
+                "popular" => true,
+                "filter" => "contact",
+                "created_at" => now()
+
             ],
         ]);
     }
