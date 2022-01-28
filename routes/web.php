@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,7 +26,9 @@ Route::get('/product-details/{product}', [FrontController::class, "productDetail
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\FrontController@switchLang']);
 
 Route::get("/admin/dashboard", [FrontController::class, "admin"])->name("admin");
-
 //ADMIN
 Route::resource('/admin/blog', BlogController::class);
 Route::resource('/admin/product', ProductController::class);
+    //news
+Route::post('/admin/newsletter/store', [NewsletterController::class, "newsletter"])->name('newsletter');
+Route::get('/admin/newsletter', [NewsletterController::class, 'index'])->name('news.index');
