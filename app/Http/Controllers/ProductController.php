@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -18,69 +19,88 @@ class ProductController extends Controller
         return view('admin.product.main', compact('products'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        //NON utilisé car on passe par des MODAL
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            "name" => ["required"],
+            "price" => ["required"],
+            "description" => ["required"],
+            "popular" => ["required"],
+            "filter" => ["required"],
+            "img" => ["required"],
+        ]);
+        $product = new Product();
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        $product->popular = $request->popular;
+        $product->filter = $request->filter;
+
+        //LOGIQUE IMAGE
+        $path = 'img/products/';
+        $file = $request->file('img');
+        $new_image_name = date('Ymd').uniqid().'.jpg';
+        $file->move(public_path($path), $new_image_name);
+        //DB
+        $product->img = $new_image_name;
+
+        $product->save();
+        return redirect()->route('product.index')->with('success', 'Product create !');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function show(Product $product)
     {
-        //
+        // NON utilisé car on passe par un modal
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Product $product)
     {
-        //
+        //NON utilisé car on passe par des MODAL
+        
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Product $product)
     {
-        //
+        request()->validate([
+            "name" => ["required"],
+            "price" => ["required"],
+            "description" => ["required"],
+            "popular" => ["required"],
+            "filter" => ["required"],
+        ]);
+
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        $product->popular = $request->popular;
+        $product->filter = $request->filter;
+
+        if ($request->img != null) {
+                //storage
+            Storage::disk('public')->delete("/img/products/".$product->img);
+            $new_image_name = date('Ymd').uniqid().'.jpg';
+            $request->file('img')->move(public_path("/img/products/"), $new_image_name);
+                //DB
+            $product->img = $new_image_name;
+        }
+        $product->save();
+        return redirect()->route('product.index')->with('success', 'Product edit !');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Product $product)
     {
-        //
+        Storage::disk('public')->delete("/img/products/".$product->img);
+        $product->delete();
+        return redirect()->route('product.index')->with('warning', "Product delete");
     }
 }
