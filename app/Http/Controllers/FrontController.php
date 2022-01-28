@@ -48,6 +48,17 @@ class FrontController extends Controller
         return Redirect::back();
     }
 
+    // LOGIQUE pour la barre de recherche 
+    public function search(Request $request)
+    {
+        $data = $request->data;
+        $blogs= Blog::where('title', 'like', "%$data%")
+                ->get();
+
+        return view('blog', compact('blogs', 'data'));
+
+    }
+
     public function admin()
     {
         return view('admin.dashboard');

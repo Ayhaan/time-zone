@@ -27,8 +27,12 @@
         </article>
         
     @endforeach
+        {{-- condition pour afficher la pagination uniquement sur la page normal et non dans la page du "search" --}}
+    @if (request()->path() != 'search')
         <div class="d-flex justify-content-center">
             {{ $blogs->links("pagination::bootstrap-4") }}
 
         </div>
+
+    @endif
 </div>
