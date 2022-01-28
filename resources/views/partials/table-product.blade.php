@@ -1,7 +1,10 @@
 @include('layouts.flash')
 <div class="card">
     <div class="card-header">
-        <h4 class="card-title">Confuguration Products  <a class="btn btn-success" href="{{ route('shop') }}">Go page Shop</a></h4>
+        <div class="d-flex justify-content-between">
+            <h4 class="card-title">Confuguration Products</h4>
+            <a class="btn btn-success" href="{{ route('shop') }}">Go page Shop</a>
+        </div>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#creation">
             Create
         </button>

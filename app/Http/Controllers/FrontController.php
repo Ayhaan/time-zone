@@ -30,9 +30,9 @@ class FrontController extends Controller
     {
         return view('contact');
     }
-    public function blogDetails()
+    public function blogDetails(Blog $blog)
     {
-        return view('blog-details');
+        return view('blog-details', compact('blog'));
     }
     public function productDetails(Product $product)
     {

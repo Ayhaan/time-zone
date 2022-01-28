@@ -8,14 +8,14 @@
                     $day = $item->created_at->format('d');
                     $month = $item->created_at->format('M');
                 @endphp
-                <a href="#" class="blog_item_date">
+                <a href="{{ route('blog-details', $item->id) }}" class="blog_item_date">
                     <h3>{{ $day }}</h3>
                     <p>{{ $month }}</p>
                 </a>
             </div>
 
             <div class="blog_details">
-                <a class="d-inline-block" href="single-blog.html">
+                <a class="d-inline-block" href="{{ route('blog-details', $item->id) }}">
                     <h2>{{ $item->title }}</h2>
                 </a>
                 {{-- LOGIQUE pour diminier la phrase et ne pas tout afficher --}}

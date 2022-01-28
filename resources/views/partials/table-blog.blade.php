@@ -1,6 +1,10 @@
+@include('layouts.flash')
 <div class="card">
     <div class="card-header">
-        <h4 class="card-title">Confuguration Blog</h4>
+        <div class="d-flex justify-content-between">
+            <h4 class="card-title">Confuguration Blog</h4>
+            <a class="btn btn-success" href="{{ route('blog') }}">Go page Blog</a>
+        </div>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#creation">
             Create
         </button>
@@ -14,8 +18,8 @@
                         <tr>
                             <th>Nbr.</th>
                             <th>Title</th>
-                            <th>Description</th>
-                            <th>Action</th>
+                            <th>Creation</th>
+                            <th class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -23,7 +27,7 @@
                             <tr>
                                 <td class="text-bold-700">{{ $item->id }}.</td>
                                 <td>{{ $item->title }}</td>
-                                <td class="text-bold-500">{{ $item->desciption }}</td>
+                                <td class="text-bold-500">{{ $item->created_at->format('d-M-Y') }}</td>
                                 <td class="text-bold-500 d-flex justify-content-around">
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit-{{ $item->id }}">
                                         Edit
@@ -35,7 +39,9 @@
                                             Delete
                                         </button>
                                     </form>
-                                    <a class="btn btn-success" href="{{ route('blog.show', $item->id) }}">Show</a>
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#show-{{ $item->id }}">
+                                        Show
+                                    </button>
                                 </td>
 
                             </tr>
