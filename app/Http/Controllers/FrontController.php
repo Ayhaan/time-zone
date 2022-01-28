@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Mailbox;
 use App\Models\Newsletter;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -65,6 +66,7 @@ class FrontController extends Controller
         $blogs = Blog::all();
         $products = Product::all();
         $news = Newsletter::all();
-        return view('admin.dashboard', compact('blogs', "products", "news"));
+        $mail = Mailbox::all();
+        return view('admin.dashboard', compact('blogs', "products", "news", "mail"));
     }
 }

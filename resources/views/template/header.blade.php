@@ -6,7 +6,7 @@
                 <div class="menu-wrapper position-relative justify-content-center">
                     <!-- Logo -->
                     <div class="logo position-absolute" style="left: 0;">
-                        <a href="index.html"><img src={{ asset("img/logo/logo.png") }} alt=""></a>
+                        <a href="{{ route('home') }}"><img src={{ asset("img/logo/logo.png") }} alt=""></a>
                     </div>
                     <!-- Main-menu -->
                     <div class="main-menu d-none d-lg-block">

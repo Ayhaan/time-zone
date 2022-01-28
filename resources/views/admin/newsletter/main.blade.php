@@ -29,7 +29,9 @@
                                 </tr>
                                 
                             @empty
-                                <p>pas d'inscription, pour l'instant..</p>
+                                <tr>
+                                    <td>pas d'inscription, pour l'instant..</td>
+                                </tr>
                             @endforelse
 
                         </tbody>

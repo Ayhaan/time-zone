@@ -2,13 +2,8 @@
 <div class="card">
     <div class="card-header">
         <div class="d-flex justify-content-between">
-            <h4 class="card-title">Confuguration Blog</h4>
-            <a class="btn btn-success" href="{{ route('blog') }}">Go page Blog</a>
+            <h4 class="card-title">Corbeille Blog</h4>
         </div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#creation">
-            Create
-        </button>
-        <a class="btn btn-warning" href="{{ route('blog.poubelle') }}">Corbeille</a>
     </div>
     <div class="card-content">
         <div class="card-body">
@@ -20,7 +15,7 @@
                             <th>Nbr.</th>
                             <th>Title</th>
                             <th>Creation</th>
-                            <th class="text-center">Action</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,16 +24,20 @@
                                 <td class="text-bold-700">{{ $item->id }}.</td>
                                 <td>{{ $item->title }}</td>
                                 <td class="text-bold-500">{{ $item->created_at->format('d-M-Y') }}</td>
-                                <td class="text-bold-500 d-flex justify-content-around">
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit-{{ $item->id }}">
-                                        Edit
-                                    </button>
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-{{ $item->id }}">
-                                        Delete
-                                    </button>
+                                <td class="text-bold-500 d-flex">
+                                    <a class="btn btn-primary" href="{{ route('restore', $item->id) }}">restore</a>
+                                    <form action="{{ route('forceDelete', $item->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">
+                                            Delete
+                                        </button>
+                                
+                                    </form>
                                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#show-{{ $item->id }}">
                                         Show
                                     </button>
+                                    
                                 </td>
 
                             </tr>

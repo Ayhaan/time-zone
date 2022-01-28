@@ -81,11 +81,40 @@ class BlogController extends Controller
     }
 
 
+    //APPLICATION de la corbeille
+    // Etapes à suivre :
+    //     - dans le model, activation de la méthode sofdelete 
+    //     - creation d'une table "add_deleted_at_to_blogs_talbe" pour activier une column dans la table blogs
+    
     public function destroy(Blog $blog)
     {
-        Storage::disk('public')->delete("/img/blog/".$blog->img);
+        //Une suppresion classique ne supprime pas définitivement l'élèment. Il est toujours stocké dans la Db mais ne s'affiche plus au niveau du front
         $blog->delete();
         return redirect()->route('blog.index')->with('warning', "Article delete");
 
+    }
+    
+    public function poubelle()
+    {   
+        //Affiche seulement les élèments en soft delete
+        $blogs = Blog::onlyTrashed()->get();
+        return view("admin.blog.trash", compact('blogs'));
+
+    }
+    public function restore($id)
+    {
+        $blog = Blog::withTrashed()->find($id);
+        $blog->restore();
+        return redirect()->route('blog.index')->with('success', 'Un article restauré');
+    }
+
+    //SUPPRESSION DEFINITIVE
+    public function forceDelete($id)
+    {
+        $blog = Blog::withTrashed()->find($id);
+        Storage::disk('public')->delete("/img/blog/".$blog->img);
+        $blog->forceDelete();
+        return redirect()->route('blog.poubelle')->with('warning', "Suppresion definitve");
+        
     }
 }

@@ -17,18 +17,20 @@
         </form>
     </aside>
 
-    @include('layouts.flash')
-    <aside class="single_sidebar_widget newsletter_widget">
-        <h4 class="widget_title">Newsletter</h4>
+    @if (request()->path() != 'search')
+        @include('layouts.flash')
+        <aside class="single_sidebar_widget newsletter_widget">
+            <h4 class="widget_title">Newsletter</h4>
 
-        <form action="{{ route('newsletter') }}" method="POST">
-            @csrf
-            <div class="form-group">
-                <input type="email" class="form-control" onfocus="this.placeholder = ''"
-                    onblur="this.placeholder = 'Enter email'" name="email" placeholder='Enter email' required>
-            </div>
-            <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                type="submit">Subscribe</button>
-        </form>
-    </aside>
+            <form action="{{ route('newsletter') }}" method="POST">
+                @csrf
+                <div class="form-group">
+                    <input type="email" class="form-control" onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'Enter email'" name="email" placeholder='Enter email' required>
+                </div>
+                <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                    type="submit">Subscribe</button>
+            </form>
+        </aside>  
+    @endif
 </div>

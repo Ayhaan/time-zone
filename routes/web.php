@@ -29,7 +29,13 @@ Route::post('/search', [FrontController::class, "search"])->name('search');
 
 Route::get("/admin/dashboard", [FrontController::class, "admin"])->name("admin");
 //ADMIN
+    //blog
 Route::resource('/admin/blog', BlogController::class);
+    //blog - soflt delete
+Route::get('/admin/poubelle/blog', [BlogController::class, 'poubelle'])->name('blog.poubelle');
+Route::get('/admin/restore/{id}', [BlogController::class, "restore"])->name('restore');
+Route::delete('/admin/definitive/{id}', [BlogController::class, "forceDelete"])->name('forceDelete');
+    //product
 Route::resource('/admin/product', ProductController::class);
     //news
 Route::post('/admin/newsletter/store', [NewsletterController::class, "newsletter"])->name('newsletter');
