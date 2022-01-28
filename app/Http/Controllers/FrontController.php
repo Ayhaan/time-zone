@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Newsletter;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -61,6 +62,9 @@ class FrontController extends Controller
 
     public function admin()
     {
-        return view('admin.dashboard');
+        $blogs = Blog::all();
+        $products = Product::all();
+        $news = Newsletter::all();
+        return view('admin.dashboard', compact('blogs', "products", "news"));
     }
 }

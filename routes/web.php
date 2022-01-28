@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -33,3 +34,5 @@ Route::resource('/admin/product', ProductController::class);
     //news
 Route::post('/admin/newsletter/store', [NewsletterController::class, "newsletter"])->name('newsletter');
 Route::get('/admin/newsletter', [NewsletterController::class, 'index'])->name('news.index');
+    //mailbox
+Route::resource("admin/mailbox", MailController::class);

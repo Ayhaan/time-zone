@@ -10,7 +10,7 @@
                     </div>
                     <div class="col-md-8">
                         <h6 class="text-muted font-semibold">Products</h6>
-                        <h6 class="font-extrabold mb-0">112.000</h6>
+                        <h6 class="font-extrabold mb-0">{{ count($products) }}</h6>
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                     </div>
                     <div class="col-md-8">
                         <h6 class="text-muted font-semibold">Blog</h6>
-                        <h6 class="font-extrabold mb-0">183.000</h6>
+                        <h6 class="font-extrabold mb-0">{{ count($blogs) }}</h6>
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                     </div>
                     <div class="col-md-8">
                         <h6 class="text-muted font-semibold">Newsletter</h6>
-                        <h6 class="font-extrabold mb-0">80.000</h6>
+                        <h6 class="font-extrabold mb-0">{{ count($news) }}</h6>
                     </div>
                 </div>
             </div>

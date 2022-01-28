@@ -8,6 +8,7 @@
 @include('template.banner')
 <section class="contact-section">
     <div class="container">
+        @include('layouts.flash')
         <div class="d-none d-sm-block mb-5 pb-4">
             @include('template.contact.maps')
         </div>

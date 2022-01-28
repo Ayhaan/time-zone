@@ -3,7 +3,7 @@
         <div class="sidebar-header">
             <div class="d-flex justify-content-center">
                 <div class="logo">
-                    <a href="{{ route('admin') }}"><img src={{ asset("img/logo/logo.png") }} alt="Logo" srcset=""></a>
+                    <a href="{{ route('home') }}"><img src={{ asset("img/logo/logo.png") }} alt="Logo" srcset=""></a>
                 </div>
                 <div class="toggler">
                     <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -38,8 +38,8 @@
                         <span>Newsletters</span>
                     </a>
                 </li>
-                <li class="sidebar-item ">
-                    <a href="index.html" class='sidebar-link'>
+                <li class="sidebar-item {{ request()->path() == 'admin/mailbox' ? 'active' : '' }}">
+                    <a href="{{ route('mailbox.index') }}" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Mailbox</span>
                     </a>
