@@ -1,0 +1,77 @@
+.msg-parent-list{
+    overflow: hidden;
+}
+.msg-list{
+    margin: 0;
+    padding: 0;
+}
+.msg-list li {
+    display: flex;
+    background-color: #f2f4f4;
+    align-items: center;
+    transition: all .2s;
+}
+.msg-list li:hover{
+    box-shadow: 0 0 10px 0 rgb(58 70 93 / 25%);
+}
+
+.msg-list li .user-action{
+    display: flex;
+    align-items: center;
+}
+.msg-list li .media-body{
+    overflow: hidden;
+    padding-left: 1rem;
+    flex: 1;
+
+}
+.msg-list li .media-body .user-details{
+    display: flex;
+    justify-content: space-between;
+
+}
+.msg-list li .media-body .user-details .mail-items span{
+    font-size: 1rem;
+    font-weight: 400!important;
+
+}
+.msg-list li .media-body .user-details .mail-meta-item span{
+    color: #828d99;
+    font-size: .86rem;
+
+}
+.msg-list li .media-body .mail-message{
+    display: flex;
+    justify-content: space-between;
+
+}
+.msg-list li .media-body .mail-message p{
+    font-weight: 400 !important;
+    font-size: .8rem;
+    color: #828d99;
+    margin-right: 1rem;
+    line-height: 1.75;
+
+}
+.msg-list .checkbox{
+    cursor: auto !important;
+}
+.msg-list #checkboxsmall1{
+    cursor: pointer !important;
+}
+.btn-msg{
+    border: 0;
+    text-align: start;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    background-color: #f2f4f4;
+    padding: 1rem  1.5rem 1rem 0;
+}
+.btn-msg:focus {
+    outline: none;
+}
+.accordion-button{
+    color: #5a8dee;
+    background-color: white !important;
+}

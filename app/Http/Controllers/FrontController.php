@@ -47,4 +47,9 @@ class FrontController extends Controller
         }
         return Redirect::back();
     }
+
+    public function admin()
+    {
+        return view('admin.dashboard');
+    }
 }

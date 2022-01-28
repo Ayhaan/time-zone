@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +23,9 @@ Route::get('/contact', [FrontController::class, "contact"])->name('contact');
 Route::get('/blog-details/{blog}', [FrontController::class, "blogDetails"])->name('blog-details');
 Route::get('/product-details/{product}', [FrontController::class, "productDetails"])->name('product-details');
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\FrontController@switchLang']);
+
+Route::get("/admin/dashboard", [FrontController::class, "admin"])->name("admin");
+
+//ADMIN
+Route::resource('/admin/blog', BlogController::class);
+Route::resource('/admin/product', ProductController::class);
